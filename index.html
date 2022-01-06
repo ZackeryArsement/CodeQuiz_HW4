@@ -5,10 +5,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <link href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Coding Quiz</title>
   </head>
+
+  <nav>
+    <h1 id='highscore'>View Highscores</h1>
+    <h1 id='timer'>Time Left: 60</h1>
+  </nav>
 
   <body>
     <h1 id="title">Coding Quiz Challenge</h1>
@@ -23,11 +30,17 @@
         <button class="buttons" id="answer-4"></button>
     </div>
 
-    <div>
-        <!-- List of word blanks -->
-        <ul id="word-blanks"></ul>
+    <div id='input-id' class="input-group mb-3 col-xs-2 invisible w-25 mx-auto">
+      <input type="text" class="form-control" placeholder="Enter Nickname" aria-label="Enter Nickname" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">Button</button>
+      </div>
     </div>
 
+    <h1 id='result'>Correct!</h1>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 

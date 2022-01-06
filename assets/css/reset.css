@@ -15,6 +15,7 @@ p,
 figure,
 blockquote,
 dl,
+nav,
 dd {
   margin: 0;
 }
