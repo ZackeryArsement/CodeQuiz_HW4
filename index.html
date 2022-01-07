@@ -18,11 +18,11 @@
   </nav>
 
   <body>
+    <!-- Title and Description -->
     <h1 id="title">Coding Quiz Challenge</h1>
-    <h2 id="main-screen-description">Try to answer the following code-based questions within the time limit. Keep in mind the incorrect answers will penalize your score time by 10 seconds!</h2>
+    <h2 id="main-screen-description">Try to answer the following code-based questions within the time limit. Keep in mind the incorrect answers will penalize your score time by 15 seconds!</h2>
 
-    <button id="start-button">Start quiz!</button>
-
+    <!-- Answer Buttons -->
     <div class="button-div">
         <button class="buttons" id="answer-1"></button>
         <button class="buttons" id="answer-2"></button>
@@ -30,11 +30,32 @@
         <button class="buttons" id="answer-4"></button>
     </div>
 
+    <!-- Highscore Input -->
     <div id='input-id' class="input-group mb-3 col-xs-2 invisible w-25 mx-auto">
-      <input type="text" class="form-control" placeholder="Enter Nickname" aria-label="Enter Nickname" aria-describedby="basic-addon2">
+      <input id='input-value' type="text" class="form-control" placeholder="Enter Nickname" aria-label="Enter Nickname" aria-describedby="basic-addon2">
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <button id='input-btn' class="btn btn-outline-secondary" type="button">Button</button>
       </div>
+    </div>
+
+    <!-- Highscore Table -->
+    <table id='highscore-table' class="table table-dark d-none w-50 mx-auto">
+      <thead>
+        <tr>
+          <th scope="col">Rank</th>
+          <th scope="col">Name</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- Start/Clear Buttons -->
+    <button id="start-button">Start quiz!</button>
+
+    <div id='button-div'>
+      <button id="retake-button">Retake Quiz!</button>
+      <button id='clear-button'>Clear Highscores</button>
     </div>
 
     <h1 id='result'>Correct!</h1>

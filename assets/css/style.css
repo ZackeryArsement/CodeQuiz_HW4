@@ -40,7 +40,33 @@ body{
     font-weight: 600;
     font-size: 1rem;
     width: fit-content;
-    margin: 15px 48% 15px 48%;
+    justify-content: center;
+    margin-left: 48%;
+    margin-right: auto;
+}
+
+#button-div{
+    width: 100%;
+    display: inline;
+}
+
+#retake-button{
+    background-color: purple;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 1rem;
+    width: fit-content;
+    justify-content: center;
+    margin-left: 42%;
+    margin-right: auto;
+}
+
+#clear-button{
+    background-color: gray;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 1rem;
+    width: fit-content;
 }
 
 .buttons{
