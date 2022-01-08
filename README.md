@@ -3,8 +3,9 @@ Title: Coding Quiz \
 Developer: Zackery Arsement \
 Deployment Date:  1/7/2022 \
 For:  UT JavaScript Coding Bootcamp \
-Published: GitHub <https://zackeryarsement.github.io/secondHomework/> \
-Built with: HTML5, CSS3
+Published: GitHub <https://github.com/ZackeryArsement/CodeQuiz_HW4> \
+Published: Webpage <https://zackeryarsement.github.io/CodeQuiz_HW4/> \
+Built with: HTML5, CSS3, Javascript
 
 
 # Summary: 
