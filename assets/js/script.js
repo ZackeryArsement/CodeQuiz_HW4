@@ -8,6 +8,7 @@ var inputValue = document.querySelector('#input-value');
 var highscoreTable = document.querySelector('#highscore-table');
 var clearButton = document.querySelector('#clear-button');
 var retakeButton = document.querySelector('#retake-button');
+var viewHighscore = document.querySelector('#highscore');
 
 var buttons = document.querySelectorAll('#button-div');
 
@@ -234,6 +235,9 @@ function nextQuestion(){
 
 // Show the user their score and notify them that the game is over
 function endQuiz(){
+    timerDisplay.textContent = 'Time Left: 0';
+    clearInterval(timerInterval);
+
     title.textContent = 'All Done!';
     title.style.display = 'block';
 
@@ -261,8 +265,9 @@ inputBtn.addEventListener('click', function(){
 
     numbHighscores++;
 
-    clearButton.style.visibility = 'visible';
-    retakeButton.style.visibility = 'visible';
+    input.classList.remove('visible');
+    input.classList.add('invisible');
+    input.value = '';
 
     if(secondsLeft < 0){
         highscoreTable.insertRow().innerHTML = '<th>' + numbHighscores + '</th><td>' + inputValue.value + '</td><td>0</td>';
@@ -270,45 +275,8 @@ inputBtn.addEventListener('click', function(){
     else{
         highscoreTable.insertRow().innerHTML = '<th>' + numbHighscores + '</th><td>' + inputValue.value + '</td><td>' + secondsLeft + '</td>';
     }
-    
-    title.textContent = 'Highscores';
-    description.style.display = 'none';
-    
-    input.classList.remove('visible');
-    input.classList.add('invisible');
-    input.value = '';
 
-    highscoreTable.classList.remove('d-none');
-    highscoreTable.classList.add('table');
-
-    // Put all the scores into an array
-    for(i=0; i<(highscoreTable.rows.length-1); i++)
-    {
-        highscoreArray[i] = highscoreTable.rows[(i+1)].cells[2].innerText;
-    }
-
-    // Sort the scores from lowest to highest
-    highscoreArray.sort(function(a, b){return a - b});
-
-    // Fill an empty array to sort out the inner HTML of each highscore from lowest score to highest score
-    var holdInnerHTML = [];
-
-    for(i=0; i<highscoreArray.length; i++){
-        for(j=1; j<=highscoreArray.length; j++){
-            if(highscoreArray[i] === highscoreTable.rows[j].cells[2].innerText){
-                holdInnerHTML[i] = highscoreTable.rows[j].innerHTML;
-            }
-        }
-    }
-
-    // Sort the ranks from highest to lowest instead of lowest to highest
-    holdInnerHTML.reverse();
-
-    // Use the created array to now change the inner HTML of all existing rows to be sorted from highest to lowest scores
-    for(i=holdInnerHTML.length; i>0; i--){
-        highscoreTable.rows[i].innerHTML = holdInnerHTML[(i-1)];
-        highscoreTable.rows[i].cells[0].innerText = i;
-    }
+    displayHighscoreTable();
 })
 
 retakeButton.addEventListener('click', function(){
@@ -341,3 +309,64 @@ clearButton.addEventListener('click', function(){
         highscoreTable.deleteRow(i);
     }
 })
+
+// When you click the 'View Highscore' in the navbar then the game stops and the highscore table is displayed
+viewHighscore.addEventListener('click', function(){
+    displayHighscoreTable();
+    endQuiz();
+
+    answer1.style.display = 'none';
+    answer2.style.display = 'none';
+    answer3.style.display = 'none';
+    answer4.style.display = 'none';
+
+    title.textContent = 'Highscores';
+    description.style.display = 'none';
+
+    input.classList.remove('visible');
+    input.classList.add('invisible');
+    input.value = '';
+
+    startButton.style.display = 'none';
+})
+
+// Display highscore table... needed for both 'input button' and 'view highscore'
+function displayHighscoreTable(){
+    clearButton.style.visibility = 'visible';
+    retakeButton.style.visibility = 'visible';
+    
+    title.textContent = 'Highscores';
+    description.style.display = 'none';
+
+    highscoreTable.classList.remove('d-none');
+    highscoreTable.classList.add('table');
+
+    // Put all the scores into an array
+    for(i=0; i<(highscoreTable.rows.length-1); i++)
+    {
+        highscoreArray[i] = highscoreTable.rows[(i+1)].cells[2].innerText;
+    }
+
+    // Sort the scores from lowest to highest
+    highscoreArray.sort(function(a, b){return a - b});
+
+    // Fill an empty array to sort out the inner HTML of each highscore from lowest score to highest score
+    var holdInnerHTML = [];
+
+    for(i=0; i<highscoreArray.length; i++){
+        for(j=1; j<=highscoreArray.length; j++){
+            if(highscoreArray[i] === highscoreTable.rows[j].cells[2].innerText){
+                holdInnerHTML[i] = highscoreTable.rows[j].innerHTML;
+            }
+        }
+    }
+
+    // Sort the ranks from highest to lowest instead of lowest to highest
+    holdInnerHTML.reverse();
+
+    // Use the created array to now change the inner HTML of all existing rows to be sorted from highest to lowest scores
+    for(i=holdInnerHTML.length; i>0; i--){
+        highscoreTable.rows[i].innerHTML = holdInnerHTML[(i-1)];
+        highscoreTable.rows[i].cells[0].innerText = i;
+    }
+}
